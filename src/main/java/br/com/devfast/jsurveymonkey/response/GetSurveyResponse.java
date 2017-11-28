@@ -8,11 +8,11 @@ import br.com.devfast.jsurveymonkey.enums.StatusSurveyResponse;
 public class GetSurveyResponse extends Response {
 	
 	private int responseCount;
-	private int pageCount;
-	private Date dateCreated;
-	private int folderId;
-	private String[] customoVariables;
-	private String nickName;
+	private int page_count;
+	private Date date_created;
+	private int folder_id;
+	private String[] customo_variables;
+	private String nickname;
 	private String id;
 	private int question_count;
 	private String category;
@@ -20,13 +20,13 @@ public class GetSurveyResponse extends Response {
 	private boolean isOwner;
 	private String language;
 	private boolean footer;
-	private Date dateModifed;
-	private String analyzeUrl;
-	private String summaryUrl;
+	private Date date_modifed;
+	private String analyze_url;
+	private String summary_url;
 	private String href;
 	private String title;
-	private String collectUrl;
-	private String editUrl;
+	private String collect_url;
+	private String edit_url;
 	private StatusSurveyResponse status;
 	private String errorMessage;
 	
@@ -34,7 +34,6 @@ public class GetSurveyResponse extends Response {
 		this.status = status;
 		this.errorMessage = message;
 	}
-	
 	public GetSurveyResponse(){}
 	
 	public int getResponseCount() {
@@ -43,35 +42,35 @@ public class GetSurveyResponse extends Response {
 	public void setResponseCount(int responseCount) {
 		this.responseCount = responseCount;
 	}
-	public int getPageCount() {
-		return pageCount;
+	public int getPage_count() {
+		return page_count;
 	}
-	public void setPageCount(int pageCount) {
-		this.pageCount = pageCount;
+	public void setPage_count(int page_count) {
+		this.page_count = page_count;
 	}
-	public Date getDateCreated() {
-		return dateCreated;
+	public Date getDate_created() {
+		return date_created;
 	}
-	public void setDateCreated(Date dateCreated) {
-		this.dateCreated = dateCreated;
+	public void setDate_created(Date date_created) {
+		this.date_created = date_created;
 	}
-	public int getFolderId() {
-		return folderId;
+	public int getFolder_id() {
+		return folder_id;
 	}
-	public void setFolderId(int folderId) {
-		this.folderId = folderId;
+	public void setFolder_id(int folder_id) {
+		this.folder_id = folder_id;
 	}
-	public String[] getCustomoVariables() {
-		return customoVariables;
+	public String[] getCustomo_variables() {
+		return customo_variables;
 	}
-	public void setCustomoVariables(String[] customoVariables) {
-		this.customoVariables = customoVariables;
+	public void setCustomo_variables(String[] customo_variables) {
+		this.customo_variables = customo_variables;
 	}
-	public String getNickName() {
-		return nickName;
+	public String getNickname() {
+		return nickname;
 	}
-	public void setNickName(String nickName) {
-		this.nickName = nickName;
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
 	}
 	public String getId() {
 		return id;
@@ -115,23 +114,23 @@ public class GetSurveyResponse extends Response {
 	public void setFooter(boolean footer) {
 		this.footer = footer;
 	}
-	public Date getDateModifed() {
-		return dateModifed;
+	public Date getDate_modifed() {
+		return date_modifed;
 	}
-	public void setDateModifed(Date dateModifed) {
-		this.dateModifed = dateModifed;
+	public void setDate_modifed(Date date_modifed) {
+		this.date_modifed = date_modifed;
 	}
-	public String getAnalyzeUrl() {
-		return analyzeUrl;
+	public String getAnalyze_url() {
+		return analyze_url;
 	}
-	public void setAnalyzeUrl(String analyzeUrl) {
-		this.analyzeUrl = analyzeUrl;
+	public void setAnalyze_url(String analyze_url) {
+		this.analyze_url = analyze_url;
 	}
-	public String getSummaryUrl() {
-		return summaryUrl;
+	public String getSummary_url() {
+		return summary_url;
 	}
-	public void setSummaryUrl(String summaryUrl) {
-		this.summaryUrl = summaryUrl;
+	public void setSummary_url(String summary_url) {
+		this.summary_url = summary_url;
 	}
 	public String getHref() {
 		return href;
@@ -145,17 +144,17 @@ public class GetSurveyResponse extends Response {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public String getCollectUrl() {
-		return collectUrl;
+	public String getCollect_url() {
+		return collect_url;
 	}
-	public void setCollectUrl(String collectUrl) {
-		this.collectUrl = collectUrl;
+	public void setCollect_url(String collect_url) {
+		this.collect_url = collect_url;
 	}
-	public String getEditUrl() {
-		return editUrl;
+	public String getEdit_url() {
+		return edit_url;
 	}
-	public void setEditUrl(String editUrl) {
-		this.editUrl = editUrl;
+	public void setEdit_url(String edit_url) {
+		this.edit_url = edit_url;
 	}
 	public StatusSurveyResponse getStatus() {
 		return status;

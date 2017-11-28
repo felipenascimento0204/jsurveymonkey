@@ -9,7 +9,7 @@ public class GetSurveyTest extends TestCase {
 	
 	public void testGetSurvey(){
 		GetSurveyService getSurveyService = new GetSurveyService();
-		assertEquals(StatusSurveyResponse.SUCCESS, getSurveyService.requestGetSurvey(new GetSurveyRequest("11111")).getStatus());
+		assertEquals(StatusSurveyResponse.SUCCESS, getSurveyService.requestGetSurvey(new GetSurveyRequest("126921666")).getStatus());
 	}
 
 }
