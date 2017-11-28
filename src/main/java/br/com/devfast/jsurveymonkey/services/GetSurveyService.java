@@ -19,7 +19,7 @@ public class GetSurveyService extends Service {
 		try {
 	        URL url = new URL(SurveyConfig.ENDPOINT_V3 + SERVICE_NAME + "/" + request.getIdSurvey());
 	        URLConnection connection = url.openConnection();
-	        setRequestAuthentication(connection);
+	        setRequestAuthentication(connection, request.getAuthenticationToken());
 	        String result = Util.getResponseText(connection);
 	        GetSurveyResponse response = new GetSurveyResponseBuilder(result).getResponse();
 	        response.setStatus(StatusSurveyResponse.SUCCESS);
