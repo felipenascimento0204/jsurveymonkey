@@ -21,7 +21,9 @@ public class GetSurveyService extends Service {
 	        URLConnection connection = url.openConnection();
 	        setRequestAuthentication(connection);
 	        String result = Util.getResponseText(connection);
-			return new GetSurveyResponseBuilder(result).getResponse();
+	        GetSurveyResponse response = new GetSurveyResponseBuilder(result).getResponse();
+	        response.setStatus(StatusSurveyResponse.SUCCESS);
+			return response; 
 		} catch (Exception e) {
 			return new GetSurveyResponse(StatusSurveyResponse.ERROR, e.getMessage());
 		}

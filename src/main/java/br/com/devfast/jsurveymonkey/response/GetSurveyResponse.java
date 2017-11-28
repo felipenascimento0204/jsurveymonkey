@@ -35,6 +35,8 @@ public class GetSurveyResponse extends Response {
 		this.errorMessage = message;
 	}
 	
+	public GetSurveyResponse(){}
+	
 	public int getResponseCount() {
 		return responseCount;
 	}
