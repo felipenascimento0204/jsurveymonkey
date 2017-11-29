@@ -12,6 +12,8 @@ public class CreateSurveyRequest extends Request {
 	
 	private String title;
 	private String from_template_id;
+	private String from_survey_id;
+	private String nickname;
 
 	public String getTitle() {
 		return title;
@@ -27,6 +29,22 @@ public class CreateSurveyRequest extends Request {
 
 	public void setFrom_template_id(String from_template_id) {
 		this.from_template_id = from_template_id;
+	}
+
+	public String getFrom_survey_id() {
+		return from_survey_id;
+	}
+
+	public void setFrom_survey_id(String from_survey_id) {
+		this.from_survey_id = from_survey_id;
+	}
+
+	public String getNickname() {
+		return nickname;
+	}
+
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
 	}
 	
 }

@@ -2,6 +2,8 @@ package br.com.devfast.jsurveymonkey.commons;
 
 import java.util.Date;
 
+import br.com.devfast.jsurveymonkey.util.GsonFactory;
+
 public class Request {
 	
 	private Date date;
@@ -18,6 +20,9 @@ public class Request {
 	}
 	public void setAuthenticationToken(String authenticationToken) {
 		this.authenticationToken = authenticationToken;
+	}
+	public String getJsonBody() {
+		return GsonFactory.create().toJson(this);
 	}
 	
 }

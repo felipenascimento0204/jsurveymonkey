@@ -14,7 +14,6 @@ import br.com.devfast.jsurveymonkey.request.CreateSurveyRequest;
 import br.com.devfast.jsurveymonkey.request.GetSurveyRequest;
 import br.com.devfast.jsurveymonkey.response.CreateSurveyResponse;
 import br.com.devfast.jsurveymonkey.response.GetSurveyResponse;
-import br.com.devfast.jsurveymonkey.util.GsonFactory;
 import br.com.devfast.jsurveymonkey.util.Util;
 
 public class SurveyService extends Service {
@@ -48,7 +47,7 @@ public class SurveyService extends Service {
 	        
 	        OutputStream os = connection.getOutputStream();
 	        OutputStreamWriter osw = new OutputStreamWriter(os, "UTF-8");
-	        osw.write(GsonFactory.create().toJson(request));
+	        osw.write(request.getJsonBody());
 	        osw.flush();
 	        osw.close();
 	        
