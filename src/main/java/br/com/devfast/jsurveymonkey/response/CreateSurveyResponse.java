@@ -27,14 +27,10 @@ public class CreateSurveyResponse extends Response {
 	private String title;
 	private String collect_url;
 	private String edit_url;
-	private StatusSurveyResponse status;
-	private String errorMessage;
 	
 	public CreateSurveyResponse(StatusSurveyResponse status, String message) {
-		this.status = status;
-		this.errorMessage = message;
+		super(status, message);
 	}
-	public CreateSurveyResponse(){}
 	
 	public int getResponseCount() {
 		return responseCount;
@@ -155,18 +151,6 @@ public class CreateSurveyResponse extends Response {
 	}
 	public void setEdit_url(String edit_url) {
 		this.edit_url = edit_url;
-	}
-	public StatusSurveyResponse getStatus() {
-		return status;
-	}
-	public void setStatus(StatusSurveyResponse status) {
-		this.status = status;
-	}
-	public String getErrorMessage() {
-		return errorMessage;
-	}
-	public void setErrorMessage(String errorMessage) {
-		this.errorMessage = errorMessage;
 	}
 	
 }

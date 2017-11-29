@@ -14,7 +14,7 @@ public class GetSurveyTest extends TestCase {
 		SurveyService getSurveyService = new SurveyService();
 		GetSurveyRequest getSurveyRequest = new GetSurveyRequest(SURVEY_ID);
 		getSurveyRequest.setAuthenticationToken(AUTH_TOKEN);
-		assertEquals(StatusSurveyResponse.SUCCESS, getSurveyService.requestGetSurvey(getSurveyRequest).getStatus());
+		assertEquals(StatusSurveyResponse.SUCCESS, getSurveyService.getSurvey(getSurveyRequest).getResponseStatus());
 	}
 
 }
