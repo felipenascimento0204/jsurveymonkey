@@ -15,7 +15,7 @@ public class CreateSurveyTest extends TestCase {
 		createSurveyRequest.setAuthenticationToken(AUTH_TOKEN);
 		createSurveyRequest.setTitle("SURVEY_TITLE_HERE");
 		createSurveyRequest.setNickname("SURVEY_NICKNAME_HERE");
-		createSurveyRequest.setFrom_survey_id("126430073");
+		createSurveyRequest.setFrom_survey_id("FROM_SURVEY_ID_HERE");
 		assertEquals(StatusSurveyResponse.SUCCESS, getSurveyService.requestCreateSurvey(createSurveyRequest).getStatus());
 	}
 
