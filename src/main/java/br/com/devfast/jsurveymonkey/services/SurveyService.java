@@ -11,7 +11,7 @@ import br.com.devfast.jsurveymonkey.request.GetSurveyRequest;
 import br.com.devfast.jsurveymonkey.response.GetSurveyResponse;
 import br.com.devfast.jsurveymonkey.util.Util;
 
-public class GetSurveyService extends Service {
+public class SurveyService extends Service {
 	
 	public static String SERVICE_NAME = "surveys";
 	
