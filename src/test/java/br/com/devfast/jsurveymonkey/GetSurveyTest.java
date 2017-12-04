@@ -7,8 +7,8 @@ import junit.framework.TestCase;
 
 public class GetSurveyTest extends TestCase {
 	
-	private static String AUTH_TOKEN = "SURVEY_API_TOKEN_HERE";
-	private static String SURVEY_ID = "SURVEY_ID_HERE";
+	private static String AUTH_TOKEN = "qLLweiVjPPT0wXlE8bsrVlcHrzDr.voUtps3A2uW3KKIOsW2SXtxcjc-StFt.Pd0TMdntO7OhoFu.wU0p-o-7jgstknbTRpvvliFBUIXEWtunlqesjJsCdp-r.ysDvvp";
+	private static String SURVEY_ID = "126999467";
 	
 	public void testGetSurvey(){
 		SurveyService getSurveyService = new SurveyService();
