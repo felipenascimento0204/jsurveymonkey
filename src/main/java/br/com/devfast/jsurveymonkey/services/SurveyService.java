@@ -37,11 +37,14 @@ public class SurveyService extends Service {
 	
 	public GetSurveyResponse getSurvey(GetSurveyRequest request){
 		try {
-	        URL url = new URL(SurveyConfig.ENDPOINT_V3 + SURVEY_SERVICE + "/" + request.getIdSurvey());
+			String urlRequest = SurveyConfig.ENDPOINT_V3 + SURVEY_SERVICE + "/" + request.getIdSurvey();
+			setRequest(urlRequest);
+	        URL url = new URL(urlRequest);
 	        HttpURLConnection connection = (HttpURLConnection)url.openConnection();
 	        connection.setRequestMethod("GET");
 	        setRequestAuthentication(connection, request.getAuthenticationToken());
 	        String result = Util.getResponseText(connection);
+	        setResponse(result);
 	        return new GetSurveyResponseBuilder(result).getResponse();
 		} catch (Exception e) {
 			return new GetSurveyResponse(StatusSurveyResponse.ERROR, e.getMessage());
@@ -61,11 +64,14 @@ public class SurveyService extends Service {
 	        
 	        OutputStream os = connection.getOutputStream();
 	        OutputStreamWriter osw = new OutputStreamWriter(os, "UTF-8");
-	        osw.write(request.getJsonBody());
+	        String requestBody = request.getJsonBody();
+	        setRequest(requestBody);
+	        osw.write(requestBody);
 	        osw.flush();
 	        osw.close();
 	        
 	        String result = Util.getResponseText(connection);
+	        setResponse(result);
 	        return new CreateSurveyResponseBuilder(result).getResponse();
 	        
 		} catch (Exception e) {
@@ -86,11 +92,14 @@ public class SurveyService extends Service {
 	        
 	        OutputStream os = connection.getOutputStream();
 	        OutputStreamWriter osw = new OutputStreamWriter(os, "UTF-8");
-	        osw.write(request.getJsonBody());
+	        String requestBody = request.getJsonBody();
+	        setRequest(requestBody);
+	        osw.write(requestBody);
 	        osw.flush();
 	        osw.close();
 	        
 	        String result = Util.getResponseText(connection);
+	        setResponse(result);
 	        return new CreateCollectorResponseBuilder(result).getResponse();
 	        
 		} catch (Exception e) {
@@ -112,11 +121,14 @@ public class SurveyService extends Service {
 	        
 	        OutputStream os = connection.getOutputStream();
 	        OutputStreamWriter osw = new OutputStreamWriter(os, "UTF-8");
-	        osw.write(request.getJsonBody());
+	        String requestBody = request.getJsonBody();
+	        setRequest(requestBody);
+	        osw.write(requestBody);
 	        osw.flush();
 	        osw.close();
 	        
 	        String result = Util.getResponseText(connection);
+	        setResponse(result);
 	        return new MessageResponseBuilder(result).getResponse();
 			
 			
@@ -143,11 +155,14 @@ public class SurveyService extends Service {
 	        
 	        OutputStream os = connection.getOutputStream();
 	        OutputStreamWriter osw = new OutputStreamWriter(os, "UTF-8");
-	        osw.write(request.getJsonBody());
+	        String requestBody = request.getJsonBody();
+	        setRequest(requestBody);
+	        osw.write(requestBody);
 	        osw.flush();
 	        osw.close();
 	        
 	        String result = Util.getResponseText(connection);
+	        setResponse(result);
 	        return new AddRecipientResponseBuilder(result).getResponse();
 			
 		} catch (Exception e) {
@@ -173,11 +188,13 @@ public class SurveyService extends Service {
 	        
 	        OutputStream os = connection.getOutputStream();
 	        OutputStreamWriter osw = new OutputStreamWriter(os, "UTF-8");
-	        osw.write(request.getJsonBody());
+	        String requestBody = request.getJsonBody();
+	        osw.write(requestBody);
 	        osw.flush();
 	        osw.close();
 	        
 	        String result = Util.getResponseText(connection);
+	        setResponse(result);
 	        return new SendMessageResponseBuilder(result).getResponse();
 			
 		} catch (Exception e) {
