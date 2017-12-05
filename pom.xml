@@ -16,6 +16,13 @@
 		<email>felipe.nascimento0204@gmail.com</email>
 	</developer>
   </developers>
+  
+	<distributionManagement>
+	  <repository>
+	    <id>myMavenRepo.write</id>
+	    <url>https://mymavenrepo.com/repo/nMr321jbd4qzTRHCsm5E/</url>
+	  </repository>
+	</distributionManagement>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
