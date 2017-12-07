@@ -10,6 +10,8 @@ public class CreateMessageRequest extends Request {
 	private String body_text;
 	private String body_html;
 	private String is_branding_enabled;
+	private String from_message_id;
+	private String from_collector_id;
 	
 	public String getType() {
 		return type;
@@ -46,6 +48,18 @@ public class CreateMessageRequest extends Request {
 	}
 	public void setIs_branding_enabled(String is_branding_enabled) {
 		this.is_branding_enabled = is_branding_enabled;
+	}
+	public String getFrom_message_id() {
+		return from_message_id;
+	}
+	public void setFrom_message_id(String from_message_id) {
+		this.from_message_id = from_message_id;
+	}
+	public String getFrom_collector_id() {
+		return from_collector_id;
+	}
+	public void setFrom_collector_id(String from_collector_id) {
+		this.from_collector_id = from_collector_id;
 	}
 	
 }
