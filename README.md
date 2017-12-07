@@ -12,7 +12,7 @@
 - [X] Create Message
 - [X] Add Recipient
 - [X] Send Message
-- [ ] Delete a Survey
+- [X] Delete a Survey
 - [ ] Add Question
 - [ ] Get Response
 - [ ] Get Response Detail

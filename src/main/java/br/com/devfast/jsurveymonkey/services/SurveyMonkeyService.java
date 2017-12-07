@@ -3,6 +3,7 @@ package br.com.devfast.jsurveymonkey.services;
 import java.net.URI;
 
 import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpDelete;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPatch;
 import org.apache.http.client.methods.HttpPost;
@@ -25,6 +26,7 @@ import br.com.devfast.jsurveymonkey.request.AddRecipientRequest;
 import br.com.devfast.jsurveymonkey.request.CreateCollectorRequest;
 import br.com.devfast.jsurveymonkey.request.CreateMessageRequest;
 import br.com.devfast.jsurveymonkey.request.CreateSurveyRequest;
+import br.com.devfast.jsurveymonkey.request.DeleteSurveyRequest;
 import br.com.devfast.jsurveymonkey.request.GetCollectorRequest;
 import br.com.devfast.jsurveymonkey.request.GetSurveyRequest;
 import br.com.devfast.jsurveymonkey.request.ModifySurveyRequest;
@@ -226,6 +228,24 @@ public class SurveyMonkeyService extends Service {
 			return new GetCollectorResponse(StatusSurveyResponse.ERROR, e.getMessage());
 		}
 		
+	}
+
+	public GetSurveyResponse deleteSurvey(DeleteSurveyRequest request) {
+		try {
+			
+			CloseableHttpClient httpClient = HttpClients.createDefault();
+			HttpDelete httpDelete = new HttpDelete(new URI(SurveyConfig.ENDPOINT_V3 + SURVEY_SERVICE + "/" + request.getIdSurvey()));
+			setRequestAuthentication(httpDelete, request.getAuthenticationToken());
+			
+			CloseableHttpResponse response = httpClient.execute(httpDelete);
+			String result = EntityUtils.toString(response.getEntity());
+			
+	        setResponse(result);
+	        
+	        return new GetSurveyResponseBuilder(result).getResponse();
+		} catch (Exception e) {
+			return new GetSurveyResponse(StatusSurveyResponse.ERROR, e.getMessage());
+		}
 	}
 
 	
