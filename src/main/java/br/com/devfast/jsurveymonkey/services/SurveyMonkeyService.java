@@ -42,6 +42,10 @@ public class SurveyMonkeyService extends Service {
 	public static String MESSAGES_SERVICE = "messages";
 	public static String RECIPIENT_SERVICE = "recipients";
 	
+	public SurveyMonkeyService(String authenticationToken) {
+		setAuthenticationToken(authenticationToken);
+	}
+	
 	public CreateSurveyResponse createSurvey(CreateSurveyRequest request){
 		try {
 			
