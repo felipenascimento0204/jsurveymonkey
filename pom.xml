@@ -51,5 +51,12 @@
 	    <version>2.8.2</version>
 	</dependency>
 	
+	<!-- HTTP Client -->
+	<dependency>
+	    <groupId>org.apache.httpcomponents</groupId>
+	    <artifactId>httpclient</artifactId>
+	    <version>4.5.4</version>
+	</dependency>
+	
   </dependencies>
 </project>

@@ -13,7 +13,7 @@ public class CreateCollectorResponseBuilder extends Builder<CreateCollectorRespo
 		try {
 			if(result != null){
 				this.response = GsonFactory.create().fromJson(result, CreateCollectorResponse.class);
-				this.response.setResponseStatus(StatusSurveyResponse.SUCCESS);
+				this.response.processStatusRequest();
 			} else {
 				this.response = new CreateCollectorResponse(StatusSurveyResponse.ERROR, "empty response");
 			}

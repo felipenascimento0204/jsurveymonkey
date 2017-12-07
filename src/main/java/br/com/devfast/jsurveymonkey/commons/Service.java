@@ -2,6 +2,8 @@ package br.com.devfast.jsurveymonkey.commons;
 
 import java.net.URLConnection;
 
+import org.apache.http.client.methods.HttpRequestBase;
+
 public class Service {
 	
 	private ServiceTransaction transaction =  new ServiceTransaction();
@@ -10,6 +12,13 @@ public class Service {
 		if(connection != null && token != null){
 	        connection.setRequestProperty("Content-Type", "application/json");
 	        connection.setRequestProperty("Authorization", "bearer " + token);
+		}
+	}
+	
+	public void setRequestAuthentication(HttpRequestBase request, String token){
+		if(request != null && token != null){
+			request.addHeader("Content-Type", "application/json");
+			request.addHeader("Authorization", "bearer " + token);
 		}
 	}
 

@@ -7,7 +7,7 @@ import java.util.Map;
 import br.com.devfast.jsurveymonkey.commons.Response;
 import br.com.devfast.jsurveymonkey.enums.StatusSurveyResponse;
 
-public class CreateSurveyResponse extends Response {
+public class ModifySurveyResponse extends Response {
 	
 	private int responseCount;
 	private int page_count;
@@ -30,7 +30,7 @@ public class CreateSurveyResponse extends Response {
 	private String collect_url;
 	private String edit_url;
 	
-	public CreateSurveyResponse(StatusSurveyResponse status, String message) {
+	public ModifySurveyResponse(StatusSurveyResponse status, String message) {
 		super(status, message);
 	}
 	

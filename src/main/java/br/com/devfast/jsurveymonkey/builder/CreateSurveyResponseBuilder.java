@@ -13,7 +13,7 @@ public class CreateSurveyResponseBuilder extends Builder<CreateSurveyResponse> {
 		try {
 			if(result != null){
 				this.response = GsonFactory.create().fromJson(result, CreateSurveyResponse.class);
-				this.response.setResponseStatus(StatusSurveyResponse.SUCCESS);
+				this.response.processStatusRequest();
 			} else {
 				this.response = new CreateSurveyResponse(StatusSurveyResponse.ERROR, "empty response");
 			}

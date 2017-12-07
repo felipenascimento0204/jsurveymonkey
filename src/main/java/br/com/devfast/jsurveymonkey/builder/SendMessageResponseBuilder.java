@@ -13,7 +13,7 @@ public class SendMessageResponseBuilder extends Builder<SendMessageResponse> {
 		try {
 			if(result != null){
 				this.response = GsonFactory.create().fromJson(result, SendMessageResponse.class);
-				this.response.setResponseStatus(StatusSurveyResponse.SUCCESS);
+				this.response.processStatusRequest();
 			} else {
 				this.response = new SendMessageResponse(StatusSurveyResponse.ERROR, "empty response");
 			}
