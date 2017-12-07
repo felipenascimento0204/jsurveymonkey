@@ -46,6 +46,8 @@ public class SurveyMonkeyService extends Service {
 		setAuthenticationToken(authenticationToken);
 	}
 	
+	public SurveyMonkeyService() {}
+	
 	public CreateSurveyResponse createSurvey(CreateSurveyRequest request){
 		try {
 			
