@@ -1,6 +1,20 @@
 # jsurveymonkey
 Java library for integration with survey monkey
 
+# Available Services
+- [X] Create a Survey
+- [x] Get a Survey
+- [x] Modify a Survey
+- [x] Create Collector
+- [X] Create Message
+- [X] Add Recipient
+- [X] Send Message
+- [ ] Delete a Survey
+- [ ] Add Question
+- [ ] Get Response
+- [ ] Get Response Detail
+- [ ] Get Survey Trends
+
 # Usage
 
 #### Init a SurveyMonkey service
@@ -21,5 +35,4 @@ CreateSurveyResponse createSurveyResponse = surveyMonkeyService.createSurvey(cre
 ```java
 GetSurveyRequest getSurveyRequest = new GetSurveyRequest("ID_SURVEY");
 GetSurveyResponse getSurveyResponse = surveyMonkeyService.getSurvey(getSurveyRequest);
-SurveyPrinter.print(getSurveyResponse);
 ```
