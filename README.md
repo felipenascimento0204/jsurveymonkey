@@ -3,14 +3,23 @@ Java library for integration with survey monkey
 
 # Usage
 
+#### Init a SurveyMonkey service
+```java
+SurveyMonkeyService surveyMonkeyService = new SurveyMonkeyService(API_AUTH_TOKEN);
+```
+
 #### Create survey request
 ```java
-SurveyMonkeyService surveyMonkeyService = new SurveyMonkeyService("API_AUTH_TOKEN");
-	
 CreateSurveyRequest createSurveyRequest = new CreateSurveyRequest();
 createSurveyRequest.setTitle("Survey by integration");
 createSurveyRequest.setNickname("Survey by integration nick");
-createSurveyRequest.setFrom_survey_id(ID_SURVEY_FROM);
 
 CreateSurveyResponse createSurveyResponse = surveyMonkeyService.createSurvey(createSurveyRequest);
+```
+
+#### Get a survey request
+```java
+GetSurveyRequest getSurveyRequest = new GetSurveyRequest("ID_SURVEY");
+GetSurveyResponse getSurveyResponse = surveyMonkeyService.getSurvey(getSurveyRequest);
+SurveyPrinter.print(getSurveyResponse);
 ```
