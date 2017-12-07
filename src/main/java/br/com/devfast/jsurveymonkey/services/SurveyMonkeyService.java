@@ -1,15 +1,11 @@
 package br.com.devfast.jsurveymonkey.services;
 
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.net.HttpURLConnection;
 import java.net.URI;
-import java.net.URL;
 
-import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPatch;
-import org.apache.http.entity.ByteArrayEntity;
+import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
@@ -38,9 +34,8 @@ import br.com.devfast.jsurveymonkey.response.GetSurveyResponse;
 import br.com.devfast.jsurveymonkey.response.MessageResponse;
 import br.com.devfast.jsurveymonkey.response.ModifySurveyResponse;
 import br.com.devfast.jsurveymonkey.response.SendMessageResponse;
-import br.com.devfast.jsurveymonkey.util.Util;
 
-public class SurveyService extends Service {
+public class SurveyMonkeyService extends Service {
 	
 	public static String SURVEY_SERVICE = "surveys";
 	public static String COLLECTOR_SERVICE = "collectors";
@@ -50,23 +45,15 @@ public class SurveyService extends Service {
 	public CreateSurveyResponse createSurvey(CreateSurveyRequest request){
 		try {
 			
-	        URL url = new URL(SurveyConfig.ENDPOINT_V3 + SURVEY_SERVICE);
-	        HttpURLConnection connection = (HttpURLConnection)url.openConnection();
-	        setRequestAuthentication(connection, request.getAuthenticationToken());
-	        connection.setRequestMethod("POST");
-	        
-	        connection.setDoOutput(true);
-	        connection.setUseCaches (false);
-	        
-	        OutputStream os = connection.getOutputStream();
-	        OutputStreamWriter osw = new OutputStreamWriter(os, "UTF-8");
-	        String requestBody = request.getJsonBody();
-	        setRequest(requestBody);
-	        osw.write(requestBody);
-	        osw.flush();
-	        osw.close();
-	        
-	        String result = Util.getResponseText(connection);
+			CloseableHttpClient httpClient = HttpClients.createDefault();
+			HttpPost httpPost = new HttpPost(new URI(SurveyConfig.ENDPOINT_V3 + SURVEY_SERVICE));
+			
+			setRequestAuthentication(httpPost, request.getAuthenticationToken());
+			setRequestBody(httpPost, request.getJsonBody());
+			
+			CloseableHttpResponse response = httpClient.execute(httpPost);
+			String result = EntityUtils.toString(response.getEntity());
+			
 	        setResponse(result);
 	        return new CreateSurveyResponseBuilder(result).getResponse();
 	        
@@ -77,14 +64,17 @@ public class SurveyService extends Service {
 	
 	public GetSurveyResponse getSurvey(GetSurveyRequest request){
 		try {
-			String urlRequest = SurveyConfig.ENDPOINT_V3 + SURVEY_SERVICE + "/" + request.getIdSurvey();
-			setRequest(urlRequest);
-	        URL url = new URL(urlRequest);
-	        HttpURLConnection connection = (HttpURLConnection)url.openConnection();
-	        connection.setRequestMethod("GET");
-	        setRequestAuthentication(connection, request.getAuthenticationToken());
-	        String result = Util.getResponseText(connection);
+			
+			CloseableHttpClient httpClient = HttpClients.createDefault();
+			HttpGet httpGet = new HttpGet(new URI(SurveyConfig.ENDPOINT_V3 + SURVEY_SERVICE + "/" + request.getIdSurvey()));
+			
+			setRequestAuthentication(httpGet, request.getAuthenticationToken());
+			
+			CloseableHttpResponse response = httpClient.execute(httpGet);
+			String result = EntityUtils.toString(response.getEntity());
+			
 	        setResponse(result);
+	        
 	        return new GetSurveyResponseBuilder(result).getResponse();
 		} catch (Exception e) {
 			return new GetSurveyResponse(StatusSurveyResponse.ERROR, e.getMessage());
@@ -95,22 +85,15 @@ public class SurveyService extends Service {
 		
 		try {
 			
-	        URL url = new URL(SurveyConfig.ENDPOINT_V3 + SURVEY_SERVICE + "/" + request.getPathSurveyId() + "/" + COLLECTOR_SERVICE);
-	        HttpURLConnection connection = (HttpURLConnection)url.openConnection();
-	        setRequestAuthentication(connection, request.getAuthenticationToken());
-	        connection.setRequestMethod("POST");
-	        connection.setDoOutput(true);
-	        connection.setUseCaches (false);
-	        
-	        OutputStream os = connection.getOutputStream();
-	        OutputStreamWriter osw = new OutputStreamWriter(os, "UTF-8");
-	        String requestBody = request.getJsonBody();
-	        setRequest(requestBody);
-	        osw.write(requestBody);
-	        osw.flush();
-	        osw.close();
-	        
-	        String result = Util.getResponseText(connection);
+			CloseableHttpClient httpClient = HttpClients.createDefault();
+			HttpPost httpPost = new HttpPost(new URI(SurveyConfig.ENDPOINT_V3 + SURVEY_SERVICE + "/" + request.getPathSurveyId() + "/" + COLLECTOR_SERVICE));
+			
+			setRequestAuthentication(httpPost, request.getAuthenticationToken());
+			setRequestBody(httpPost, request.getJsonBody());
+			
+			CloseableHttpResponse response = httpClient.execute(httpPost);
+			String result = EntityUtils.toString(response.getEntity());
+			
 	        setResponse(result);
 	        return new CreateCollectorResponseBuilder(result).getResponse();
 	        
@@ -124,25 +107,17 @@ public class SurveyService extends Service {
 		
 		try {
 			
-			URL url = new URL(SurveyConfig.ENDPOINT_V3 + COLLECTOR_SERVICE + "/" + request.getPathCollectorId() + "/" + MESSAGES_SERVICE);
-	        HttpURLConnection connection = (HttpURLConnection)url.openConnection();
-	        setRequestAuthentication(connection, request.getAuthenticationToken());
-	        connection.setRequestMethod("POST");
-	        connection.setDoOutput(true);
-	        connection.setUseCaches (false);
-	        
-	        OutputStream os = connection.getOutputStream();
-	        OutputStreamWriter osw = new OutputStreamWriter(os, "UTF-8");
-	        String requestBody = request.getJsonBody();
-	        setRequest(requestBody);
-	        osw.write(requestBody);
-	        osw.flush();
-	        osw.close();
-	        
-	        String result = Util.getResponseText(connection);
+			CloseableHttpClient httpClient = HttpClients.createDefault();
+			HttpPost httpPost = new HttpPost(new URI(SurveyConfig.ENDPOINT_V3 + COLLECTOR_SERVICE + "/" + request.getPathCollectorId() + "/" + MESSAGES_SERVICE));
+			
+			setRequestAuthentication(httpPost, request.getAuthenticationToken());
+			setRequestBody(httpPost, request.getJsonBody());
+			
+			CloseableHttpResponse response = httpClient.execute(httpPost);
+			String result = EntityUtils.toString(response.getEntity());
+			
 	        setResponse(result);
 	        return new MessageResponseBuilder(result).getResponse();
-			
 			
 		} catch (Exception e) {
 			return new MessageResponse(StatusSurveyResponse.ERROR, e.getMessage());
@@ -154,27 +129,20 @@ public class SurveyService extends Service {
 		
 		try {
 			
-			URL url = new URL(SurveyConfig.ENDPOINT_V3 + COLLECTOR_SERVICE + "/" 
+			CloseableHttpClient httpClient = HttpClients.createDefault();
+			HttpPost httpPost = new HttpPost(new URI(SurveyConfig.ENDPOINT_V3 + COLLECTOR_SERVICE + "/" 
 					+ request.getPathCollectorId() + "/" 
 					+ MESSAGES_SERVICE + "/" + request.getPathMessageId() 
-					+ "/" + RECIPIENT_SERVICE );
+					+ "/" + RECIPIENT_SERVICE));
 			
-	        HttpURLConnection connection = (HttpURLConnection)url.openConnection();
-	        setRequestAuthentication(connection, request.getAuthenticationToken());
-	        connection.setRequestMethod("POST");
-	        connection.setDoOutput(true);
-	        connection.setUseCaches (false);
-	        
-	        OutputStream os = connection.getOutputStream();
-	        OutputStreamWriter osw = new OutputStreamWriter(os, "UTF-8");
-	        String requestBody = request.getJsonBody();
-	        setRequest(requestBody);
-	        osw.write(requestBody);
-	        osw.flush();
-	        osw.close();
-	        
-	        String result = Util.getResponseText(connection);
+			setRequestAuthentication(httpPost, request.getAuthenticationToken());
+			setRequestBody(httpPost, request.getJsonBody());
+			
+			CloseableHttpResponse response = httpClient.execute(httpPost);
+			String result = EntityUtils.toString(response.getEntity());
+			
 	        setResponse(result);
+			
 	        return new AddRecipientResponseBuilder(result).getResponse();
 			
 		} catch (Exception e) {
@@ -187,26 +155,20 @@ public class SurveyService extends Service {
 		
 		try {
 			
-			URL url = new URL(SurveyConfig.ENDPOINT_V3 + COLLECTOR_SERVICE + "/" 
+			CloseableHttpClient httpClient = HttpClients.createDefault();
+			HttpPost httpPost = new HttpPost(new URI(SurveyConfig.ENDPOINT_V3 + COLLECTOR_SERVICE + "/" 
 					+ request.getPathCollectorId() + "/" 
 					+ MESSAGES_SERVICE + "/" + request.getPathMessageId() 
-					+ "/send" );
+					+ "/send"));
 			
-	        HttpURLConnection connection = (HttpURLConnection)url.openConnection();
-	        setRequestAuthentication(connection, request.getAuthenticationToken());
-	        connection.setRequestMethod("POST");
-	        connection.setDoOutput(true);
-	        connection.setUseCaches (false);
-	        
-	        OutputStream os = connection.getOutputStream();
-	        OutputStreamWriter osw = new OutputStreamWriter(os, "UTF-8");
-	        String requestBody = request.getJsonBody();
-	        osw.write(requestBody);
-	        osw.flush();
-	        osw.close();
-	        
-	        String result = Util.getResponseText(connection);
+			setRequestAuthentication(httpPost, request.getAuthenticationToken());
+			setRequestBody(httpPost, request.getJsonBody());
+			
+			CloseableHttpResponse response = httpClient.execute(httpPost);
+			String result = EntityUtils.toString(response.getEntity());
+			
 	        setResponse(result);
+	        
 	        return new SendMessageResponseBuilder(result).getResponse();
 			
 		} catch (Exception e) {
@@ -222,8 +184,8 @@ public class SurveyService extends Service {
 			CloseableHttpClient httpClient = HttpClients.createDefault();
 			HttpPatch httpPatch = new HttpPatch(new URI(SurveyConfig.ENDPOINT_V3 + SURVEY_SERVICE + "/" + request.getPathSurveyId()));
 			setRequestAuthentication(httpPatch, request.getAuthenticationToken());
-			HttpEntity entity = new ByteArrayEntity(request.getJsonBody().getBytes("UTF-8"));
-	        httpPatch.setEntity(entity);
+			setRequestBody(httpPatch, request.getJsonBody());
+			
 			CloseableHttpResponse response = httpClient.execute(httpPatch);
 			String result = EntityUtils.toString(response.getEntity());
 			
@@ -236,5 +198,6 @@ public class SurveyService extends Service {
 		}
 
 	}
+
 	
 }
