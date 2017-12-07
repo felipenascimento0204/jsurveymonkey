@@ -1,4 +1,4 @@
-# jsurveymonkey
+# JSurveyMonkey
 * Java library for integration with SurveyMonkey API V3
 * Biblioteca Java para integração com API SurveyMonkey V3
 * Biblioteca Java para la integración con API SurveyMonkey V3
