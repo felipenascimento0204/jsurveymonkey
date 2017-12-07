@@ -1,7 +1,7 @@
 # jsurveymonkey
-Java library for integration with SurveyMonkey
-Biblioteca Java para integração com SurveyMonkey
-Biblioteca Java para la integración con SurveyMonkey
+* Java library for integration with SurveyMonkey
+* Biblioteca Java para integração com SurveyMonkey
+* Biblioteca Java para la integración con SurveyMonkey
 
 # Available Services
 - [X] Create a Survey
