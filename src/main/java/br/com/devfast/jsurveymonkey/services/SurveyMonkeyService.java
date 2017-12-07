@@ -14,6 +14,7 @@ import br.com.devfast.jsurveymonkey.app.SurveyConfig;
 import br.com.devfast.jsurveymonkey.builder.AddRecipientResponseBuilder;
 import br.com.devfast.jsurveymonkey.builder.CreateCollectorResponseBuilder;
 import br.com.devfast.jsurveymonkey.builder.CreateSurveyResponseBuilder;
+import br.com.devfast.jsurveymonkey.builder.GetCollectorResponseBuilder;
 import br.com.devfast.jsurveymonkey.builder.GetSurveyResponseBuilder;
 import br.com.devfast.jsurveymonkey.builder.MessageResponseBuilder;
 import br.com.devfast.jsurveymonkey.builder.ModifySurveyResponseBuilder;
@@ -24,12 +25,14 @@ import br.com.devfast.jsurveymonkey.request.AddRecipientRequest;
 import br.com.devfast.jsurveymonkey.request.CreateCollectorRequest;
 import br.com.devfast.jsurveymonkey.request.CreateMessageRequest;
 import br.com.devfast.jsurveymonkey.request.CreateSurveyRequest;
+import br.com.devfast.jsurveymonkey.request.GetCollectorRequest;
 import br.com.devfast.jsurveymonkey.request.GetSurveyRequest;
 import br.com.devfast.jsurveymonkey.request.ModifySurveyRequest;
 import br.com.devfast.jsurveymonkey.request.SendMessageRequest;
 import br.com.devfast.jsurveymonkey.response.AddRecipientResponse;
 import br.com.devfast.jsurveymonkey.response.CreateCollectorResponse;
 import br.com.devfast.jsurveymonkey.response.CreateSurveyResponse;
+import br.com.devfast.jsurveymonkey.response.GetCollectorResponse;
 import br.com.devfast.jsurveymonkey.response.GetSurveyResponse;
 import br.com.devfast.jsurveymonkey.response.MessageResponse;
 import br.com.devfast.jsurveymonkey.response.ModifySurveyResponse;
@@ -203,6 +206,26 @@ public class SurveyMonkeyService extends Service {
 			return new ModifySurveyResponse(StatusSurveyResponse.ERROR, e.getMessage());
 		}
 
+	}
+
+	public GetCollectorResponse getCollector(GetCollectorRequest request) {
+		
+		try {
+			
+			CloseableHttpClient httpClient = HttpClients.createDefault();
+			HttpGet httpGet = new HttpGet(new URI(SurveyConfig.ENDPOINT_V3 + COLLECTOR_SERVICE + "/" + request.getIdCollector()));
+			setRequestAuthentication(httpGet, request.getAuthenticationToken());
+			
+			CloseableHttpResponse response = httpClient.execute(httpGet);
+			String result = EntityUtils.toString(response.getEntity());
+			
+	        setResponse(result);
+	        return new GetCollectorResponseBuilder(result).getResponse();
+	        
+		} catch (Exception e) {
+			return new GetCollectorResponse(StatusSurveyResponse.ERROR, e.getMessage());
+		}
+		
 	}
 
 	

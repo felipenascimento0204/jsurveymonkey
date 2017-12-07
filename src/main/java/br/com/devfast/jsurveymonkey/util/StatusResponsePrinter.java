@@ -2,7 +2,7 @@ package br.com.devfast.jsurveymonkey.util;
 
 import br.com.devfast.jsurveymonkey.commons.Response;
 
-public class SurveyPrinter {
+public class StatusResponsePrinter {
 
 	public static void print(Response response) {
 		if(response != null){

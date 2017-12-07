@@ -6,8 +6,9 @@
 # Available Services
 - [X] Create a Survey
 - [x] Get a Survey
-- [x] Modify a Survey
+- [x] Modify a Survey 
 - [x] Create Collector
+- [x] Get Collector
 - [X] Create Message
 - [X] Add Recipient
 - [X] Send Message
