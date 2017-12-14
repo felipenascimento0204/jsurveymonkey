@@ -10,6 +10,8 @@ public  class Response {
 	private Error error;
 	private String httpStatusCode;
 	
+	public Response() {}
+	
 	public Response(StatusSurveyResponse status, String message) {
 		this.responseStatus = status;
 		this.errorMessage = message;
@@ -39,6 +41,14 @@ public  class Response {
 		this.error = error;
 	}
 	
+	public String getHttpStatusCode() {
+		return httpStatusCode;
+	}
+
+	public void setHttpStatusCode(String httpStatusCode) {
+		this.httpStatusCode = httpStatusCode;
+	}
+
 	public void processStatusRequest(){
 		if(this.error != null){
 			this.responseStatus = StatusSurveyResponse.ERROR;

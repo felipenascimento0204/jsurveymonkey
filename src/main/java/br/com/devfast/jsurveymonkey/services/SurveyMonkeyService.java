@@ -17,6 +17,7 @@ import br.com.devfast.jsurveymonkey.builder.CreateCollectorResponseBuilder;
 import br.com.devfast.jsurveymonkey.builder.CreateSurveyResponseBuilder;
 import br.com.devfast.jsurveymonkey.builder.GetCollectorResponseBuilder;
 import br.com.devfast.jsurveymonkey.builder.GetSurveyResponseBuilder;
+import br.com.devfast.jsurveymonkey.builder.GetSurveyRollupResponseBuilder;
 import br.com.devfast.jsurveymonkey.builder.MessageResponseBuilder;
 import br.com.devfast.jsurveymonkey.builder.ModifySurveyResponseBuilder;
 import br.com.devfast.jsurveymonkey.builder.SendMessageResponseBuilder;
@@ -29,6 +30,7 @@ import br.com.devfast.jsurveymonkey.request.CreateSurveyRequest;
 import br.com.devfast.jsurveymonkey.request.DeleteSurveyRequest;
 import br.com.devfast.jsurveymonkey.request.GetCollectorRequest;
 import br.com.devfast.jsurveymonkey.request.GetSurveyRequest;
+import br.com.devfast.jsurveymonkey.request.GetSurveyRollupRequest;
 import br.com.devfast.jsurveymonkey.request.ModifySurveyRequest;
 import br.com.devfast.jsurveymonkey.request.SendMessageRequest;
 import br.com.devfast.jsurveymonkey.response.AddRecipientResponse;
@@ -36,6 +38,7 @@ import br.com.devfast.jsurveymonkey.response.CreateCollectorResponse;
 import br.com.devfast.jsurveymonkey.response.CreateSurveyResponse;
 import br.com.devfast.jsurveymonkey.response.GetCollectorResponse;
 import br.com.devfast.jsurveymonkey.response.GetSurveyResponse;
+import br.com.devfast.jsurveymonkey.response.GetSurveyRollupResponse;
 import br.com.devfast.jsurveymonkey.response.MessageResponse;
 import br.com.devfast.jsurveymonkey.response.ModifySurveyResponse;
 import br.com.devfast.jsurveymonkey.response.SendMessageResponse;
@@ -46,6 +49,7 @@ public class SurveyMonkeyService extends Service {
 	public static String COLLECTOR_SERVICE = "collectors";
 	public static String MESSAGES_SERVICE = "messages";
 	public static String RECIPIENT_SERVICE = "recipients";
+	public static String ROLLUP_SERVICE = "rollups";
 	
 	public SurveyMonkeyService(String authenticationToken) {
 		setAuthenticationToken(authenticationToken);
@@ -247,6 +251,28 @@ public class SurveyMonkeyService extends Service {
 			return new GetSurveyResponse(StatusSurveyResponse.ERROR, e.getMessage());
 		}
 	}
-
+	
+	public GetSurveyRollupResponse getSurveyRollup(GetSurveyRollupRequest request){
+		
+		try {
+			
+			CloseableHttpClient httpClient = HttpClients.createDefault();
+			HttpGet httpGet = new HttpGet(new URI(SurveyConfig.ENDPOINT_V3 + SURVEY_SERVICE + "/" + request.getIdSurvey() + "/" + ROLLUP_SERVICE));
+			
+			setRequestAuthentication(httpGet, request.getAuthenticationToken());
+			
+			CloseableHttpResponse response = httpClient.execute(httpGet);
+			String result = EntityUtils.toString(response.getEntity());
+			
+	        setResponse(result);
+	        
+	        return new GetSurveyRollupResponseBuilder(result).getResponse();
+	        
+		} catch (Exception e) {
+			return new GetSurveyRollupResponse(StatusSurveyResponse.ERROR, e.getMessage());
+		}
+		
+	}
+	
 	
 }
