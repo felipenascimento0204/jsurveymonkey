@@ -7,7 +7,7 @@ import br.com.devfast.jsurveymonkey.enums.StatusSurveyResponse;
 
 public class GetSurveyResponse extends Response {
 	
-	private int responseCount;
+	private int response_count;
 	private int page_count;
 	private Date date_created;
 	private int folder_id;
@@ -17,7 +17,7 @@ public class GetSurveyResponse extends Response {
 	private int question_count;
 	private String category;
 	private String preview;
-	private boolean isOwner;
+	private boolean is_owner;
 	private String language;
 	private boolean footer;
 	private Date date_modifed;
@@ -32,11 +32,18 @@ public class GetSurveyResponse extends Response {
 		super(status, message);
 	}
 	
-	public int getResponseCount() {
-		return responseCount;
+	
+	public int getResponse_count() {
+		return response_count;
 	}
-	public void setResponseCount(int responseCount) {
-		this.responseCount = responseCount;
+	public void setResponse_count(int response_count) {
+		this.response_count = response_count;
+	}
+	public boolean isIs_owner() {
+		return is_owner;
+	}
+	public void setIs_owner(boolean is_owner) {
+		this.is_owner = is_owner;
 	}
 	public int getPage_count() {
 		return page_count;
@@ -93,10 +100,10 @@ public class GetSurveyResponse extends Response {
 		this.preview = preview;
 	}
 	public boolean isOwner() {
-		return isOwner;
+		return is_owner;
 	}
 	public void setOwner(boolean isOwner) {
-		this.isOwner = isOwner;
+		this.is_owner = isOwner;
 	}
 	public String getLanguage() {
 		return language;
